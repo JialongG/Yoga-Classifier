@@ -1,0 +1,10 @@
+{
+  "labels_path": "assets/models/tflite/yoga-poses-english.txt",
+  "model_paths": {
+    "EffNetB3 FT (unfreeze 20)": "assets/models/tflite/effb3_ft1_fp16_UI.tflite",
+    "EffNetB3 FT (unfreeze 30)": "assets/models/tflite/effb3_ft2_fp16_UI.tflite",
+    "EffNetB3 FT (unfreeze 40)": "assets/models/tflite/effb3_ft3_fp16_UI.tflite"
+  },
+  "image_size": [300, 300],
+  "top_k": 5
+}

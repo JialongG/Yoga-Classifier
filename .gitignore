@@ -1,0 +1,26 @@
+.DS_Store
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.mypy_cache/
+.ruff_cache/
+
+# Local environment files
+.env
+.env.*
+.python-version
+
+# Generated logs and cache
+*.log
+*.tmp
+
+# Local model/data artifacts (keep paths only in docs)
+*.h5
+*.keras
+*.ckpt
+*.pb
+*.onnx
+
