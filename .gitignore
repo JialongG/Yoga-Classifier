@@ -1,26 +1,43 @@
+# macOS metadata
 .DS_Store
+
+# Python virtualenvs
 venv/
 .venv/
+
+# Python bytecode and caches
 __pycache__/
+.pycache/
 *.pyc
+
+# Tooling caches
 .pytest_cache/
 .ipynb_checkpoints/
 .mypy_cache/
 .ruff_cache/
+
+# Editors and local tooling
+.vscode/
+.idea/
+.claude/
 
 # Local environment files
 .env
 .env.*
 .python-version
 
-# Generated logs and cache
+# Generated logs and scratch files
 *.log
 *.tmp
 
-# Local model/data artifacts (keep paths only in docs)
+# Training artifacts (host externally; do not commit)
 *.h5
 *.keras
 *.ckpt
 *.pb
 *.onnx
 
+# Raw dataset and exploratory notebooks are intentionally untracked
+data/*
+!data/README.md
+notebooks/

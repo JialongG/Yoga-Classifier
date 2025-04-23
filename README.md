@@ -2,9 +2,7 @@
 
 ## Project Overview
 
-This repository provides a Streamlit-based yoga pose classification application backed by exported EfficientNetB3 TFLite models.
-
-The production entrypoint is the UI + inference service path. Notebook material in `notebooks/` is retained as supporting experimentation history, not as the canonical runtime.
+This repository provides a Streamlit-based yoga pose classification application backed by exported EfficientNetB3 TFLite models. The production entrypoint is the UI + inference service path.
 
 ## Core Pipeline
 
@@ -29,18 +27,17 @@ The production entrypoint is the UI + inference service path. Notebook material 
 │       ├── __init__.py
 │       └── inference.py
 ├── tests/
-│   └── test_inference_config.py
+│   ├── test_inference_config.py
+│   └── test_inference_core.py
 ├── assets/
 │   ├── models/
-│   │   ├── tflite/
-│   │   ├── effb3/
-│   │   └── best_cnn/
+│   │   └── tflite/
 │   └── screenshots/
 │       └── ui/
 ├── data/
-│   └── 107_yoga_poses/
-├── notebooks/
+│   └── README.md
 ├── requirements.txt
+├── requirements-dev.txt
 └── README.md
 ```
 
@@ -48,10 +45,16 @@ The production entrypoint is the UI + inference service path. Notebook material 
 
 - Python `3.11+`
 - Create and activate a virtual environment
-- Install dependencies:
+- Install runtime dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
+
+Install development dependencies (tests):
+
+```bash
+pip install -r requirements-dev.txt
 ```
 
 ## Configuration
@@ -59,12 +62,16 @@ pip install -r requirements.txt
 - Example config: `configs/inference_config.example.json`
 - Optional local override: `configs/inference_config.json`
 
-Supported keys:
+Required keys:
 
 - `labels_path`: repository-relative label path
 - `model_paths`: mapping of display name to repository-relative model path
 - `image_size`: `[width, height]`
 - `top_k`: number of classes shown in output
+
+## Data
+
+The training/validation/test imagery used to produce the shipped models is a third-party Yoga-107 corpus and is not redistributed here. See [`data/README.md`](data/README.md) for the expected on-disk layout and guidance on obtaining the dataset. The Streamlit inference app does not require the dataset to run.
 
 ## Usage
 
@@ -74,7 +81,7 @@ Run the application:
 streamlit run yoga_pose_ui.py
 ```
 
-Or run with the provided launcher:
+Or run with the provided macOS launcher:
 
 ```bash
 bash run_streamlit.sh
@@ -92,3 +99,17 @@ Tests:
 pytest -q
 ```
 
+## Model Artifacts
+
+Exported TFLite models under `assets/models/tflite/` are approximately 21 MB each. A `.gitattributes` file declares model binaries (`*.tflite`, `*.keras`, `*.h5`, `*.onnx`, `*.pb`) as Git LFS targets for future commits.
+
+```bash
+git lfs install
+git lfs migrate import --include="*.tflite,*.keras,*.h5" --everything
+```
+
+## Attribution
+
+- **Backbone**: [EfficientNetB3](https://arxiv.org/abs/1905.11946) via `keras.applications`, initialized from ImageNet weights and fine-tuned for 107 yoga pose classes.
+- **Dataset**: a third-party Yoga-107 image corpus, not redistributed with this repository. See [`data/README.md`](data/README.md).
+- **Academic context**: the training workflow and UI integration was developed as part of a rapidly executed academic project.
