@@ -42,8 +42,6 @@ st.caption(
     "and run top-k classification inference."
 )
 
-# Configuration and model-loading errors are fatal for the page; surface them
-# as visible errors rather than letting Streamlit show a stack trace.
 try:
     service = load_service_cached()
 except InferenceConfigError as exc:

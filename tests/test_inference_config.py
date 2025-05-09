@@ -45,7 +45,7 @@ def test_load_inference_config_rejects_missing_required_key(tmp_path: Path) -> N
 
 def test_load_inference_config_rejects_non_positive_top_k(tmp_path: Path) -> None:
     bad = {
-        "labels_path": "assets/models/tflite/yoga-poses-english.txt",
+        "labels_path": "assets/labels/yoga-poses-english.txt",
         "model_paths": {"m": "assets/models/tflite/effb3_ft1_fp16_UI.tflite"},
         "image_size": [300, 300],
         "top_k": 0,

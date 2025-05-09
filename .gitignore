@@ -29,6 +29,13 @@ __pycache__/
 # Generated logs and scratch files
 *.log
 *.tmp
+logs/
+cache/
+tmp/
+tb_logs/
+artifacts/training_runs/
+artifacts/pose_runs/
+hw2_models/
 
 # Training artifacts (host externally; do not commit)
 *.h5
@@ -36,8 +43,8 @@ __pycache__/
 *.ckpt
 *.pb
 *.onnx
+*.pt
 
-# Raw dataset and exploratory notebooks are intentionally untracked
+# Raw dataset is intentionally untracked
 data/*
 !data/README.md
-notebooks/

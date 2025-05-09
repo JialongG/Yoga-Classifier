@@ -15,17 +15,22 @@ data/107_yoga_poses/
 ```
 
 Every split must contain one subdirectory per class, and the class names must
-match the entries in `assets/models/tflite/yoga-poses-english.txt` (107
+match the entries in `assets/labels/yoga-poses-english.txt` (107
 labels, lowercase, one per line).
 
 ## Obtaining the data
 
 The models shipped under `assets/models/tflite/` were trained against a
-publicly available 107-class yoga pose dataset. Place a compatible copy of
-that dataset under the layout above before running any training or
-evaluation code. The Streamlit inference app under `yoga_pose_ui.py` does
-**not** require this directory and can be exercised with arbitrary user
-uploads.
+publicly available 107-class yoga pose dataset from Kaggle. Download the
+dataset from Kaggle:
+[Yoga Pose Image Classification Dataset](https://www.kaggle.com/datasets/shrutisaxena/yoga-pose-image-classification-dataset).
+Example download command:
+```bash
+kaggle datasets download -d shrutisaxena/yoga-pose-image-classification-dataset -p data && unzip -o data/yoga-pose-image-classification-dataset.zip -d data
+```
+Then place it under the layout above before running any training or evaluation
+code. The Streamlit inference app under `yoga_pose_ui.py` does **not** require
+this directory and can be exercised with arbitrary user uploads.
 
 ## Git policy
 

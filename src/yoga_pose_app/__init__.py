@@ -8,6 +8,15 @@ from .inference import (
     PredictionResult,
     load_inference_config,
 )
+from .pose_pipeline import (
+    PoseExtractionConfig,
+    PosePipelineArtifacts,
+    PosePipelineError,
+    PoseTrainingConfig,
+    train_pose_pipeline,
+)
+from .training_config import TrainingConfig
+from .training_pipeline import TrainingArtifacts, run_training_pipeline
 
 __all__ = [
     "InferenceConfig",
@@ -16,5 +25,13 @@ __all__ = [
     "InferenceService",
     "PredictionResult",
     "load_inference_config",
+    "PoseExtractionConfig",
+    "PosePipelineArtifacts",
+    "PosePipelineError",
+    "PoseTrainingConfig",
+    "train_pose_pipeline",
+    "TrainingConfig",
+    "TrainingArtifacts",
+    "run_training_pipeline",
 ]
 
